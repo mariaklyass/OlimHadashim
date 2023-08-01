@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="shortcut icon" type="image/png" href="img/logo.jpg" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+      crossorigin=""
+    />
+    <script
+      defer
+      src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+      integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+      crossorigin=""
+    ></script>
+    <script defer src="script.js"></script>
+
+    <title>OlimHadashim | All Places on one Map</title>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="nav">
+        <img
+          src="img/logo.jpg"
+          alt="OlimHadashim logo"
+          class="nav__logo"
+          id="logo"
+        />
+        <ul class="nav__links">
+          <li class="nav__item">
+            <a class="nav__link" href="#section--0">Map</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#section--1">Features</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#section--2">Options</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#section--3">Ideas</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link nav__link--btn btn--show-modal" href="#"
+              >Feedback</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header__title">
+        <h1>
+          Forgot where <span class="highlight">nearest bank</span> is<br />
+          and <span class="highlight">how it works</span>? Been there, done that
+          ;)
+        </h1>
+        <h4>
+          Try making visual notes via a simple map to pin all your important
+          locations.
+        </h4>
+        <button class="btn--text btn--scroll-to">
+          See for yourself &DownArrow;
+        </button>
+        <img
+          src="img/hero.jpg"
+          class="header__img"
+          alt="Minimalist bank items"
+        />
+      </div>
+    </header>
+
+    <section class="section--0">
+      <div class="sidebar">
+        <img src="img/logo.jpg" alt="Logo" class="logo" />
+
+        <ul class="entries">
+          <form class="form hidden">
+            <div class="form__row">
+              <label class="form__label">Type</label>
+              <select class="form__input form__input--type">
+                <option value="health">Health</option>
+                <option value="finance">Finance</option>
+                <option value="governement">Government</option>
+                <option value="errands">Errands</option>
+              </select>
+            </div>
+            <div class="form__row">
+              <label class="form__label">Name</label>
+              <input class="form__input form__input--name" placeholder="Name" />
+            </div>
+            <div class="form__row">
+              <label class="form__label">Notes</label>
+              <input
+                type="text"
+                class="form__input form__input--notes"
+                placeholder="Write your text here"
+              />
+            </div>
+
+            <button class="form__btn">OK</button>
+          </form>
+        </ul>
+      </div>
+
+      <div id="map"></div>
+    </section>
+
+    <section class="section" id="section--1">
+      <div class="section__title">
+        <h2 class="section__description">Features</h2>
+        <h3 class="section__header">
+          Just a simple map with pins. Nothing fancy.
+        </h3>
+      </div>
+
+      <div class="features">
+        <img
+          src="img/map-lazy.tiff"
+          data-src="img/map.webp"
+          alt="Map with pins"
+          class="features__img lazy-img"
+        />
+        <div class="features__feature">
+          <div class="features__icon">
+            <svg>
+              <use xlink:href="img/icons.svg#icon-monitor"></use>
+            </svg>
+          </div>
+          <h5 class="features__header">Click on the map</h5>
+          <p>
+            The starting point is your current location. You can browse and
+            scale the map to find what you're looking for.
+          </p>
+        </div>
+
+        <div class="features__feature">
+          <div class="features__icon">
+            <svg>
+              <use xlink:href="img/icons.svg#icon-trending-up"></use>
+            </svg>
+          </div>
+          <h5 class="features__header">Make notes about chosen locations</h5>
+          <p>
+            Finally figured out the working hours of your local bank? Been to a
+            really nice restaurant recently? Write it down!
+          </p>
+        </div>
+        <img
+          src="img/notes-lazy.jpg"
+          data-src="img/notes.jpg"
+          alt="Notes"
+          class="features__img lazy-img"
+        />
+
+        <img
+          src="img/type-lazy.jpg"
+          data-src="img/type.jpg"
+          alt="Credit card"
+          class="features__img lazy-img"
+        />
+        <div class="features__feature">
+          <div class="features__icon">
+            <svg>
+              <use xlink:href="img/icons.svg#icon-credit-card"></use>
+            </svg>
+          </div>
+          <h5 class="features__header">The devil is in details</h5>
+          <p>
+            Oh, and don't forget - visualizing is as important as a good
+            description. Use your imagination to describe the place!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="section--2">
+      <div class="section__title">
+        <h2 class="section__description">Options</h2>
+        <h3 class="section__header">
+          Simple is good. Although, a few details could never hurt. So here is
+          what you can do:
+        </h3>
+      </div>
+
+      <div class="operations">
+        <div class="operations__tab-container">
+          <button
+            class="btn operations__tab operations__tab--1 operations__tab--active"
+            data-tab="1"
+          >
+            <span>01</span>Chosing a type of a location
+          </button>
+          <button class="btn operations__tab operations__tab--2" data-tab="2">
+            <span>02</span>Creating a name
+          </button>
+          <button class="btn operations__tab operations__tab--3" data-tab="3">
+            <span>03</span>Making notes
+          </button>
+        </div>
+        <div
+          class="operations__content operations__content--1 operations__content--active"
+        >
+          <div class="operations__icon operations__icon--1">
+            <svg>
+              <use xlink:href="img/icons.svg#icon-upload"></use>
+            </svg>
+          </div>
+          <h5 class="operations__header">
+            Classifying places by types provides visual clarity
+          </h5>
+          <p>It can be related to Health, Finance, Government, or Errands.</p>
+        </div>
+
+        <div class="operations__content operations__content--2">
+          <div class="operations__icon operations__icon--2">
+            <svg>
+              <use xlink:href="img/icons.svg#icon-home"></use>
+            </svg>
+          </div>
+          <h5 class="operations__header">Come up with a name</h5>
+          <p>
+            It can be official or purely associative - that is totally up to
+            you.
+          </p>
+        </div>
+        <div class="operations__content operations__content--3">
+          <div class="operations__icon operations__icon--3">
+            <svg>
+              <use xlink:href="img/icons.svg#icon-user-x"></use>
+            </svg>
+          </div>
+          <h5 class="operations__header">
+            And finally! Here is the place for your thoughts.
+          </h5>
+          <p>
+            Your notes can be dry and efficient or witty and intricate - you are
+            the one who decides. However, please remember to be brief.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="section--3">
+      <div class="section__title section__title--testimonials">
+        <h2 class="section__description">Not sure yet?</h2>
+        <h3 class="section__header">
+          A few ideas (or more likely - inspirations) to get you started:
+        </h3>
+      </div>
+
+      <div class="slider">
+        <div class="slide">
+          <img src="img/mizrahi.jpeg" alt="Bank" />
+        </div>
+
+        <div class="slide">
+          <img src="img/Maccabi.jpeg" alt="Healthcare office" />
+        </div>
+
+        <div class="slide">
+          <img src="img/tahana_merkazit.webp" alt="Central Bus Station" />
+        </div>
+
+        <div class="slide">
+          <img src="img/ramilevi.jpeg" alt="Food Supermarket" />
+        </div>
+
+        <button class="slider__btn slider__btn--left">&larr;</button>
+        <button class="slider__btn slider__btn--right">&rarr;</button>
+        <div class="dots"></div>
+      </div>
+    </section>
+
+    <section class="section section--sign-up">
+      <div class="section__title">
+        <h3 class="section__header">
+          If you have any thoughts or suggestions, you are more than welcome to
+          use the contact form below:
+        </h3>
+      </div>
+      <button class="btn btn--show-modal">Contact us</button>
+    </section>
+
+    <footer class="footer">
+      <ul class="footer__nav">
+        <li class="footer__item">
+          <a class="footer__link" href="#">About</a>
+        </li>
+        <li class="footer__item">
+          <a class="footer__link" href="#">Terms of Use</a>
+        </li>
+        <li class="footer__item">
+          <a class="footer__link" href="#">Privacy Policy</a>
+        </li>
+        <li class="footer__item">
+          <a class="footer__link" href="#">Blog</a>
+        </li>
+        <li class="footer__item">
+          <a class="footer__link" href="#">Contact Us</a>
+        </li>
+      </ul>
+      <img src="img/logo.jpg" alt="Logo" class="footer__logo" />
+    </footer>
+
+    <div class="modal hidden">
+      <button class="btn--close-modal">&times;</button>
+      <h2 class="modal__header">
+        Fill in the form with your contact information
+      </h2>
+      <form class="modal__form">
+        <label>First Name</label>
+        <input type="text" />
+        <label>Last Name</label>
+        <input type="text" />
+        <label>Email Address</label>
+        <input type="email" />
+        <button class="btn">Next step &rarr;</button>
+      </form>
+    </div>
+    <div class="overlay hidden"></div>
+  </body>
+</html>
